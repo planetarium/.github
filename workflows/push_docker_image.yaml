@@ -6,7 +6,7 @@ on:
       working_directory:
         required: false
         type: string
-        default: /
+        default: .
       repository:
         required: true
         type: string
