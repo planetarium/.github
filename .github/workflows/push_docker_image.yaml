@@ -14,6 +14,11 @@ on:
         required: false
         type: string
         default: git-${{ github.sha }}
+    secrets:
+      docker_username:
+        required: true
+      docker_access_token:
+        required: true
 
 jobs:
   build_and_push:
@@ -22,7 +27,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2.3.4
       - name: login
-        run: docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        run: docker login --username ${{ secrets.docker_username }} --password ${{ secrets.docker_access_token }}
       - name: build
         run: docker build -t planetariumhq/${{ inputs.repository }}:${{ inputs.tag }} .
         working-directory: ${{ inputs.working_directory }}
