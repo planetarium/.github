@@ -14,9 +14,6 @@ on:
         required: false
         type: string
         default: git-${{ github.sha }}
-    secrets:
-      token:
-        required: true
 
 jobs:
   build_and_push:
