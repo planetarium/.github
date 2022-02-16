@@ -1,0 +1,9 @@
+{
+    "name": "Docker Build and Push Workflow",
+    "description": "Planetarium Organization starter workflow to build and push Docker image.",
+    "iconName": "docker",
+    "categories": [],
+    "filePatterns": [
+        "^Dockerfile"
+    ]
+}
