@@ -28,7 +28,7 @@ jobs:
         with:
           version: ${{ inputs.pnpm_version }}
           run_install: |
-            cwd: ${{ inputs.workspace_directory }}
+            cwd: "${{ inputs.workspace_directory }}"
             recursive: true
       - run: pnpm -r build
         working-directory: ${{ inputs.working_directory }} 
