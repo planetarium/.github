@@ -3,6 +3,10 @@ name: Publish TypeScript Package
 on:
   workflow_call:
     inputs:
+      workspace_directory:
+        required: false
+        type: string
+        default: .
       working_directory:
         required: false
         type: string
@@ -23,8 +27,11 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: ${{ inputs.pnpm_version }}
-          run_install: true
+          run_install: |
+            cwd: ${{ inputs.workspace_directory }}
+            recursive: true
       - run: pnpm -r build
+        working-directory: ${{ inputs.working_directory }} 
       - name: choose version
         working-directory: ${{ inputs.working_directory }}
         run: |
